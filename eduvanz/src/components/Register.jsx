@@ -123,7 +123,7 @@ class Register extends React.Component {
         />
         <br />
         <br />
-        <button onClick={() => handleaddRegistration(this.state)} style={{backgroundColor:"red",height:50,width:100,padding:5}}> ADD </button>
+        <button onClick={() => handleaddRegistration(this.state)} style={{backgroundColor:"red",height:50,width:100,padding:5}} > ADD </button>
          
       </div>
     );

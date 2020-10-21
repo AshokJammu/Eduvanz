@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <Link to="/" style={{ padding: 20 }}>
+        <Link to="/register" style={{ padding: 20 }}>
           REGISTRATION
         </Link>
 

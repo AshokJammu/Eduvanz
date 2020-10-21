@@ -7,7 +7,7 @@ import Reports from "../components/Reports"
 const Routers =()=>{
     return(
         <>
-            <Route path="/" component={Register}/>
+            <Route path="/register" component={Register}/>
             <Route path="/userdetails" component={RegisterList}/>
             <Route path="/reports" component={Reports}/>
         </>
