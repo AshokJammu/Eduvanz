@@ -1,6 +1,7 @@
 import React from "react";
+import axios from "axios";
 
-import { AppContext } from "../utils/AppProvider";
+// import { AppContext } from "../utils/AppProvider";
 
 class Register extends React.Component {
   constructor(props) {
@@ -16,6 +17,11 @@ class Register extends React.Component {
     };
   }
 
+  handleClick = () =>{
+    console.log("ash")
+    axios.post("http://localhost:5000/register",this.state)
+    .then(res=>  console.log(res))
+  }
   render() {
     const {
       name,
@@ -26,8 +32,8 @@ class Register extends React.Component {
       guests,
       address,
     } = this.state;
-    // console.log(this.state, "states");
-    const { handleaddRegistration } = this.context;
+    //console.log(this.state, "states");
+    // const { handleaddRegistration } = this.context;
 
     return (
       <div style={{ height:500,width:500,borderBlockStartColor:"red",marginLeft:350}}>
@@ -60,8 +66,8 @@ class Register extends React.Component {
         <br />
         DOB:
         <input
-          type="date"
           value={dob}
+          type="Date"
           onChange={(e) =>
             this.setState({
               dob: e.target.value,
@@ -123,13 +129,14 @@ class Register extends React.Component {
         />
         <br />
         <br />
-        <button onClick={() => handleaddRegistration(this.state)} style={{backgroundColor:"red",height:50,width:100,padding:5}} > ADD </button>
-         
+        {/* <button onClick={() => handleaddRegistration(this.state)} style={{backgroundColor:"red",height:50,width:100,padding:5}} > ADD </button> */}
+        <button onClick={this.handleClick} style={{backgroundColor:"red",height:50,width:100,padding:5}} > ADD </button>
+
       </div>
     );
   }
 }
 
-Register.contextType = AppContext;
+// Register.contextType = AppContext;
 
 export default Register;
