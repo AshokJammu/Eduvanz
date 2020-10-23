@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Route } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Profiles from "./Profiles";
+import AllList from "./AllList";
 
 class RegisterList extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class RegisterList extends React.Component {
     event.preventDefault();
     this.setState({
       searchInput: this.state.search,
+      searchState:!this.state.searchState
     });
   };
 
@@ -36,8 +38,7 @@ class RegisterList extends React.Component {
     // console.log("sear", this.state.ageData);
     const { match } = this.props;
     const userArr = userdata.data;
-    // let query = new URLSearchParams(history,location.search)
-    // console.log(query,"query")
+    
     return (
       <div>
         <h1>UserDetails</h1>
@@ -64,6 +65,7 @@ class RegisterList extends React.Component {
         </form>
         <br />
         <br />
+         
         <div class="row">
           {/* const items = userArr && userArr.find((item) => item.name === search) */}
           {userArr &&
@@ -95,10 +97,9 @@ class RegisterList extends React.Component {
         </div>
         <Route
           path="/userdetails/:id"
-          render={(props) => (
-            <Profiles userArr={userArr} {...props} />
-          )}
+          render={(props) => <Profiles userArr={userArr} {...props} />}
         />
+        {!this.state.searchState && <AllList />}
       </div>
     );
   }

@@ -14,9 +14,9 @@ class Reports extends React.Component {
   }
   componentDidMount() {
     axios
-      // .get("https://eduvanz.herokuapp.com/users")
+      .get("https://eduvanz.herokuapp.com/users")
       // .then((res) => console.log(res.data, "response"));
-      .get("http://localhost:5000/users")
+      //.get("http://localhost:5000/users")
       .then((res) =>
         this.setState({
           userdata: res.data.data,
