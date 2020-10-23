@@ -14,7 +14,7 @@ const Navbar = () => {
         </Link>
 
         <Link to="/reports" style={{ padding: 20 }}>
-          REPORTS
+          DASHBOARD
         </Link>
       </div>
      
