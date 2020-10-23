@@ -67,7 +67,23 @@ class Reports extends React.Component {
     });
   };
 
-  handleClickCount=(e)=>{
+  handleClickAvg = () => {
+    console.log("ashok");
+    var avgCount = this.state.userdata.map(item=>{
+      return item.guests
+    })
+    // console.log(avgCount)
+    console.log(avgCount)
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    var avgVal = avgCount.reduce(reducer) / avgCount.length
+    // console.log(avgCount.reduce(reducer),avgVal)
+    this.setState({
+      value: avgVal,
+    });
+
+  };
+
+  handleClickCount = (e) => {
     console.log(e.target.value);
     var professionsCount = this.state.userdata.filter((item) => {
       if (e.target.value === item.profession) {
@@ -79,14 +95,14 @@ class Reports extends React.Component {
     this.setState({
       value: professionsCount.length,
     });
-  }
+  };
+
   render() {
-     
     const { userdata } = this.state;
     // const userArr = userdata.data;
     var localUsers = [];
     var seletLocality = [];
-    console.log(userdata)
+    console.log(userdata);
     if (userdata.length !== 0) {
       for (var i = 0; i < userdata.length; i++) {
         localUsers.push(userdata[i].locality);
@@ -110,8 +126,8 @@ class Reports extends React.Component {
     return (
       <>
         <h1>Dashboard</h1>
-        <div class="row">
-          <div class="col-3">
+        <div class="mt-3 mb-0 text-muted text-sm row">
+          <div class="col-3  ">
             <select
               class="custom-select mr-sm-2 alert-primary"
               onChange={this.handleClickAge}
@@ -122,7 +138,7 @@ class Reports extends React.Component {
               <option value="25+">25+</option>
             </select>
           </div>
-          <div class="col-3">
+          <div class="col-3  ">
             <select
               class="custom-select mr-sm-2 alert-primary"
               onChange={this.handleLocalData}
@@ -134,13 +150,12 @@ class Reports extends React.Component {
                 ))}
             </select>
           </div>
-          <div class="col-3">
-            <button class="btn alert-primary">Avg groupSize</button>
+          <div class="col-3  ">
+            <button class="btn alert-primary" onClick={this.handleClickAvg}>
+              Avg groupSize
+            </button>
           </div>
           <div class="col-3">
-            {/* <button class="btn alert-primary" >
-              Count Of Student&Professionals
-            </button> */}
             <select
               class="custom-select mr-sm-2 alert-primary"
               onChange={this.handleClickCount}
